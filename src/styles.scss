@@ -35,7 +35,7 @@ body {
   }
 
   .photo-container {
-    height: calc(100vh - 48px - 48px - env(safe-area-inset-bottom));
+    height: calc(100vh - 48px - 48px);
     margin: 0 5px;
     position: relative;
     display: grid;

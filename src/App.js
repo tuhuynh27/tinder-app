@@ -1,6 +1,8 @@
 import React, { useState, useRef, useMemo } from 'react'
 
 import TinderCard from 'react-tinder-card'
+import { use100vh } from 'react-div-100vh'
+
 import Navbar from './components/Navbar'
 import Photo from './components/Photo'
 import Button from './components/Buttons'
@@ -92,10 +94,12 @@ function App() {
     await childRefs[newIndex].current.restoreCard()
   }
 
+  const height100vh = use100vh()
+
   return (
     <div className="main">
       <Navbar/>
-      <div className="photo-container">
+      <div className="photo-container" style={{ height: `calc(${height100vh ? height100vh + 'px' : '100vh'} - 48px - 48px)` }}>
         {db.map((character, index) =>
           <TinderCard
             ref={childRefs[index]}
