@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Bottom() {
+  const navigate = useNavigate()
+  const [selected, setSelected] = useState(0)
+
+  function select(index) {
+    setSelected(index)
+    switch(index) {
+      case 0:
+        navigate('/')
+        break
+      case 1:
+        navigate('/my-likes')
+        break
+      case 2:
+        navigate('/matches')
+        break
+      default:
+        console.log('Home')
+    }
+  }
+
   return (
     <div className="bottom">
-      <div className="active">
+      <div className={selected === 0 ? 'active' : 'none'} onClick={() => select(0)}>
         <svg focusable="false" aria-hidden="true" role="presentation" viewBox="0 0 24 24" width="28px" height="28px"
              className="Sq(28px) navbarActive_C($c-pink) C($c-ds-gray-50) Trsdu($fast)">
           <path
@@ -11,7 +32,7 @@ export default function Bottom() {
             fill="" fillRule="nonzero"/>
         </svg>
       </div>
-      <div>
+      <div className={selected === 1 ? 'active' : 'none'} onClick={() => select(1)}>
         <svg focusable="false" aria-hidden="true" role="presentation" viewBox="0 0 24 24" width="28px" height="28px"
              className="Sq(32px) C($c-ds-gray-50) Trsdu($fast)">
           <path
@@ -19,7 +40,7 @@ export default function Bottom() {
             fill=""/>
         </svg>
       </div>
-      <div>
+      <div className={selected === 2 ? 'active' : 'none'} onClick={() => select(2)}>
         <svg focusable="false" aria-hidden="true" role="presentation" viewBox="0 0 24 24" width="28px" height="28px"
              className="Sq(28px) navbarActive_C($c-pink) C($c-ds-gray-50) Trsdu($fast)">
           <path

@@ -36,18 +36,33 @@ body {
 
   .photo-container {
     height: calc(100vh - 48px - 48px);
-    margin: 0 5px;
+    padding: 0 5px;
     position: relative;
     display: grid;
     grid-template: 1fr / 1fr;
     background-color: #F6F7F8;
 
+    .central {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      .msg {
+        p {
+          color: #505965;
+          font-size: 18px;
+        }
+      }
+    }
+
     .empty {
       position: absolute;
-      left: 50%;
       top: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
+      left: 50%;
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
 
       .profile-outer-ring {
         width: 70px;
@@ -70,7 +85,7 @@ body {
           border: 0;
           background-color: #e9ebee80;
           border-radius: 50%;
-          animation-duration: 2s;
+          animation-duration: 1.5s;
           animation-name: bubble-bounce;
           animation-iteration-count: infinite;
         }
@@ -89,6 +104,16 @@ body {
 
         img {
           width: 100%;
+          animation: spin 5s infinite linear;
+        }
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(359deg);
         }
       }
 
