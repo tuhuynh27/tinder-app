@@ -8,6 +8,17 @@ import Photo from './components/Photo'
 import Button from './components/Buttons'
 import Bottom from './components/Bottom'
 
+function shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+  return array;
+}
+
 const db = [
   {
     name: 'Thao',
@@ -40,6 +51,8 @@ const db = [
     image: 'https://images-ssl.gotinder.com/5fcfaead95fef0010068946b/640x800_5ce9a7eb-bb7c-42bf-ba54-b12914e3831e.jpg'
   }
 ]
+
+shuffle(db)
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(db.length - 1)
@@ -122,7 +135,10 @@ function App() {
           </div>
         </div>}
         <Button canSwipe={canSwipe} canGoback={canGoBack}
-                goBack={() => goBack()} swipeLeft={() => swipe('left')} swipeRight={() => swipe('right')} />
+                goBack={() => goBack()}
+                swipeLeft={() => swipe('left')}
+                swipeUp={() => swipe('up')}
+                swipeRight={() => swipe('right')} />
       </div>
       <Bottom/>
     </div>

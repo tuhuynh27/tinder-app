@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Buttons({ canSwipe, canGoBack, swipeLeft, swipeRight, goBack }) {
+export default function Buttons({ canSwipe, canGoBack, swipeLeft, swipeUp, swipeRight, goBack }) {
   return (
     <div className={`buttons ${canSwipe ? 'active' : 'deactivate' }`}>
       <button className="back" onClick={() => goBack()} style={{ pointerEvent: canGoBack ? 'auto' : 'none' }}>
@@ -21,7 +21,7 @@ export default function Buttons({ canSwipe, canGoBack, swipeLeft, swipeRight, go
           </svg>
         </div>
       </button>
-      <button className="super">
+      <button className="super" onClick={() => swipeUp()}>
         <div style={{ width: '46px', height: '46px' }}>
           <svg focusable="false" aria-hidden="true" role="presentation" viewBox="0 0 24 24" width="24px"
                height="24px" className="Scale(.6) Expand">
