@@ -1,6 +1,8 @@
 body {
   margin: 0;
   font-family: 'Noto Sans', sans-serif;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .main {
@@ -52,6 +54,7 @@ body {
         p {
           color: #505965;
           font-size: 18px;
+          font-weight: 400;
         }
       }
     }
