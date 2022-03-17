@@ -53,13 +53,16 @@ function Explorer() {
 
   // set last direction and decrease current index
   const swiped = (direction, nameToDelete, index) => {
-    console.log(`${explorerProfiles[index].name} is swiped ${direction}`)
+    console.debug(`${explorerProfiles[index].name} is swiped ${direction}`)
     setLastMatched(false)
     const match = Math.random() < 0.5
     if ((direction === 'up' || direction === 'right') && match) {
-      PubSub.publish('match', { name: explorerProfiles[index].name, image: explorerProfiles[index].image })
-      setLastMatched(true)
-      setLastMatchedId(index)
+      setTimeout(() => {
+        console.debug(`It's a match with ${nameToDelete}`)
+        PubSub.publish('match', { name: explorerProfiles[index].name, image: explorerProfiles[index].image })
+        setLastMatched(true)
+        setLastMatchedId(index)
+      }, 1000)
     }
 
     setLastDirection(direction)
@@ -67,7 +70,7 @@ function Explorer() {
   }
 
   const outOfFrame = (name, idx) => {
-    console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current)
+    console.debug(`${name} (${idx}) left the screen!`, currentIndexRef.current)
     // handle the case in which go back is pressed before card goes outOfFrame
     currentIndexRef.current >= idx && childRefs[idx].current.restoreCard()
     // TODO: when quickly swipe and restore multiple times the same card,
@@ -81,7 +84,7 @@ function Explorer() {
   }
 
   const swipe = async (dir) => {
-    console.log('Last direction: ', lastDirection)
+    console.debug('Last direction: ', lastDirection)
     if (canSwipe && currentIndex < explorerProfiles.length) {
       await childRefs[currentIndex].current.swipe(dir) // Swipe the card!
     }

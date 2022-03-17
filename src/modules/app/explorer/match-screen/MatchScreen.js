@@ -1,27 +1,48 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './MatchScreen.scss'
 
 import PubSub from 'pubsub-js'
 
 import MatchImg from 'assets/img/match.png'
 
+const queue = []
+
 function MatchScreen() {
   const [isOpen, setIsOpen] = useState(false)
+  const isOpenRef = useRef(false)
   const [name, setName] = useState('')
   const [image, setImage] = useState('')
 
   useEffect(() => {
     PubSub.subscribe('match', (_, { name, image }) => {
-      setIsOpen(true)
-      setName(name)
-      setImage(image)
+      if (isOpenRef.current === true) {
+        queue.push({ name, image })
+      } else {
+        openMatch({ name, image })
+      }
     })
   }, [])
+
+  function openMatch({ name, image }) {
+    setIsOpen(true)
+    isOpenRef.current = true
+    setName(name)
+    setImage(image)
+  }
+
+  function close() {
+    setIsOpen(false)
+    isOpenRef.current = false
+    if (queue.length > 0) {
+      const { name, image } = queue.shift()
+      setTimeout(() => openMatch({ name, image }), 500)
+    }
+  }
 
   return (
     <React.Fragment>
       {isOpen && <div className="match-screen" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,1)), url('${image}')` }}>
-        <div className="close" onClick={() => setIsOpen(false)}>
+        <div className="close" onClick={() => close()}>
           <svg focusable="false" aria-hidden="true" role="presentation" viewBox="0 0 24 24" width="20px" height="20px"
                className="Sq(24px) P(4px)">
             <path className=""
