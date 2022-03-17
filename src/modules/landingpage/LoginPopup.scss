@@ -1,0 +1,78 @@
+.login-popup {
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  height: 100%;
+  width: 100%;
+  max-width: 894px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 20%, #ff4458), white;
+
+  .login-logo {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+    img {
+      width: 150px;
+    }
+  }
+
+  .login-close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .get-started {
+    margin-top: 50px;
+    width: 100%;
+    text-align: center;
+
+    h1 {
+      font-style: italic;
+      font-weight: bold;
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+  }
+
+  .warning {
+    margin-top: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    text-align: center;
+
+    p {
+      color: #21262e;
+      font-size: 14px;
+    }
+  }
+
+  .login-button-groups {
+    margin-top: 20px;
+    text-align: center;
+
+    button {
+      max-width: 315px;
+      border: 2px solid #505965;
+      background: white;
+      color: #505965;
+      padding-left: 20px;
+      padding-right: 20px;
+      border-radius: 100px;
+      min-height: 54px;
+      width: 100%;
+      font-size: 16px;
+      text-transform: uppercase;
+      position: relative;
+      margin-bottom: 10px;
+
+      img, svg {
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+      }
+    }
+  }
+}

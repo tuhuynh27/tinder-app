@@ -4,7 +4,7 @@ import './MyLikes.scss'
 import { use100vh } from 'react-div-100vh'
 
 import { useSelector } from 'react-redux'
-import { selectListMatched, selectListLiked } from 'modules/app/explorer/redux/matchedSlice'
+import { selectListMatched, selectListLiked } from 'modules/redux/matchedSlice'
 
 import { openProfile } from 'utils/openProfile'
 

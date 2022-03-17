@@ -3,7 +3,7 @@ import './Matches.scss'
 import { openProfile } from 'utils/openProfile'
 
 import { useSelector } from 'react-redux'
-import { selectListMatched } from 'modules/app/explorer/redux/matchedSlice'
+import { selectListMatched } from 'modules/redux/matchedSlice'
 
 function Matches() {
   const listMatched = useSelector(selectListMatched)

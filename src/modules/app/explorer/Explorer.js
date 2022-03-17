@@ -11,7 +11,7 @@ import NotFound from '../notfound/NotFound'
 import { getExplorerProfiles } from './data/explorer'
 
 import { useDispatch } from 'react-redux'
-import { addMatched, addLiked } from 'modules/app/explorer/redux/matchedSlice'
+import { addMatched, addLiked } from 'modules/redux/matchedSlice'
 
 import PubSub from 'pubsub-js'
 
