@@ -4,7 +4,7 @@ import PubSub from 'pubsub-js'
 
 import TinderCard from 'react-tinder-card'
 
-import Photo from './components/Photo'
+import Image from './components/Image'
 import Button from './components/Buttons'
 import Match from './Match'
 
@@ -132,7 +132,7 @@ export default function Explore() {
           onSwipe={(dir) => swiped(dir, character.name, index)}
           onCardLeftScreen={() => outOfFrame(character.name, index)}
           preventSwipe={['up', 'down']}>
-          <Photo
+          <Image
             name={character.name} age={character.age}
             bio={character.bio}
             image={character.image} />

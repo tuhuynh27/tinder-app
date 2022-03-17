@@ -5,7 +5,77 @@ body {
   overflow-x: hidden;
 }
 
-.main {
+.landing-page {
+  position: fixed;
+  top: 50%; right: 50%;
+  transform: translate(50%,-50%);
+  height: 100%;
+  width: 100%;
+  max-width: 894px;
+  background-image: linear-gradient(black,
+          transparent 20%,
+          transparent 35%,
+          black), url('../public/landing.webp');
+  background-size: cover;
+
+  .logo {
+    position: fixed;
+    top: 10px;
+    left: 20px;
+    width: 125px;
+  }
+
+  .buttons {
+    position: fixed;
+    bottom: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 80%;
+    padding: 0 10%;
+
+    button {
+      border: 0;
+      background: white;
+      color: black;
+      padding-left: 20px;
+      padding-right: 20px;
+      border-radius: 100px;
+      min-height: 52px;
+      width: 100%;
+      font-size: 16px;
+
+      &.login {
+        background: transparent;
+        border: 2px solid white;
+        color: white;
+      }
+    }
+  }
+
+  .bottom {
+    position: fixed;
+    bottom: 10px;
+    width: 90%;
+    padding: 0 5%;
+
+    p {
+      text-align: center;
+      font-size: 11px;
+      color: #7c8591;
+
+      a {
+        color: #7c8591;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.app-main {
   position: relative;
   max-width: 894px;
   margin: auto;
@@ -36,7 +106,7 @@ body {
     }
   }
 
-  .photo-container {
+  .outlet-container {
     height: calc(100vh - 48px - 48px);
     padding: 0 5px;
     position: relative;
@@ -63,8 +133,6 @@ body {
       position: absolute;
       top: 50%;
       left: 50%;
-      -moz-transform: translateX(-50%) translateY(-50%);
-      -webkit-transform: translateX(-50%) translateY(-50%);
       transform: translateX(-50%) translateY(-50%);
 
       .profile-outer-ring {
@@ -139,13 +207,13 @@ body {
       grid-column: 1 / 1;
       grid-row: 1 / 1;
 
-      .photo {
+      .image {
         height: 100%;
         border-radius: 8px;
         display: flex;
         background-size: cover;
 
-        .actions {
+        .information {
           align-self: flex-end;
           margin-bottom: calc(20px + 62px + 35px);
           color: white;

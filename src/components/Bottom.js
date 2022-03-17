@@ -9,16 +9,14 @@ export default function Bottom() {
     setSelected(index)
     switch(index) {
       case 0:
-        navigate('/')
+        navigate('/app')
         break
       case 1:
-        navigate('/my-likes')
+        navigate('/app/my-likes')
         break
       case 2:
-        navigate('/matches')
+        navigate('/app/matches')
         break
-      default:
-        console.log('Home')
     }
   }
 
