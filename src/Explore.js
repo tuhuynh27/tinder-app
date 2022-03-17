@@ -57,6 +57,7 @@ shuffle(db)
 export default function Explore() {
   const [currentIndex, setCurrentIndex] = useState(db.length - 1)
   const [lastDirection, setLastDirection] = useState()
+  const [lastMatched, setLastMatched] = useState(false)
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex)
 
@@ -80,9 +81,11 @@ export default function Explore() {
   const swiped = (direction, nameToDelete, index) => {
     console.log(`${db[index].name} is swiped ${direction}`)
 
+    setLastMatched(false)
     const match = Math.random() < 0.5
     if ((direction === 'up' || direction === 'right') && match) {
       PubSub.publish('match', { name: db[index].name, image: db[index].image })
+      setLastMatched(true)
     }
 
     setLastDirection(direction)
@@ -107,7 +110,7 @@ export default function Explore() {
 
   // increase current index and show card
   const goBack = async () => {
-    if (!canGoBack) return
+    if (lastMatched || !canGoBack) return
     const newIndex = currentIndex + 1
     updateCurrentIndex(newIndex)
     await childRefs[newIndex].current.restoreCard()
