@@ -17,9 +17,8 @@ export default function Match() {
 
   return (
     <React.Fragment>
-      {isOpen && <div className="match-screen" onClick={() => setIsOpen(false)}
-                      style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0) 20%, rgba(0,0,0,1)), url('${image}')` }}>
-        <div className="close">
+      {isOpen && <div className="match-screen" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0) 20%, rgba(0,0,0,1)), url('${image}')` }}>
+        <div className="close" onClick={() => setIsOpen(false)}>
           <svg focusable="false" aria-hidden="true" role="presentation" viewBox="0 0 24 24" width="20px" height="20px"
                className="Sq(24px) P(4px)">
             <path className=""
@@ -27,7 +26,7 @@ export default function Match() {
           </svg>
         </div>
         <img src="./match.png" alt="Match"/>
-        <p>{name} liked you too!</p>
+        <p>{name} likes you too!</p>
       </div>}
     </React.Fragment>
   )
