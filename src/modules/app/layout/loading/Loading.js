@@ -15,7 +15,7 @@ export default function Loading() {
   return (
     <React.Fragment>
       {loading && (
-        <div className="load-screen">
+        <div className="loading-screen">
           <img src={LogoWhite} alt="Loading" />
         </div>
       )}

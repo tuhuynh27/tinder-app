@@ -5,10 +5,10 @@ import PubSub from 'pubsub-js'
 
 import TinderCard from 'react-tinder-card'
 
-import ExplorerImage from './components/ExplorerImage'
-import Button from './components/SwipeButtons'
-import Match from './Match'
-import NotFound from './NotFound'
+import ExplorerImage from './explorer-image/ExplorerImage'
+import Button from './swipe-buttons/SwipeButtons'
+import Match from '../match/Match'
+import NotFound from '../notfound/NotFound'
 
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;

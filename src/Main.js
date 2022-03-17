@@ -7,10 +7,10 @@ import {
 } from 'react-router-dom'
 
 import LandingPage from './modules/landingpage/LandingPage'
-import Explorer from './modules/app/Explorer'
-import MyLikes from './modules/app/MyLikes'
-import NotFound from './modules/app/NotFound'
-import Layout from './modules/app/Layout'
+import Explorer from './modules/app/explorer/Explorer'
+import MyLikes from './modules/app/mylikes/MyLikes'
+import NotFound from './modules/app/notfound/NotFound'
+import Layout from './modules/app/layout/Layout'
 
 function Main() {
   return (
