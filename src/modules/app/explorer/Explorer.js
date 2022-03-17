@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react'
 import './Explorer.scss'
 
-import PubSub from 'pubsub-js'
-
 import TinderCard from 'animation/swipe'
 
 import ExplorerImage from './explorer-image/ExplorerImage'
@@ -12,7 +10,14 @@ import NotFound from '../notfound/NotFound'
 
 import { getExplorerProfiles } from './data/explorer'
 
+import { useDispatch } from 'react-redux'
+import { addMatched, addLiked } from 'modules/app/explorer/redux/matchedSlice'
+
+import PubSub from 'pubsub-js'
+
 function Explorer() {
+  const dispatch = useDispatch()
+
   const [explorerProfiles, setExplorerProfiles] = useState([])
   const [currentIndex, setCurrentIndex] = useState(explorerProfiles.length - 1)
   const [lastDirection, setLastDirection] = useState()
@@ -52,17 +57,22 @@ function Explorer() {
   const canSwipe = currentIndex >= 0
 
   // set last direction and decrease current index
-  const swiped = (direction, nameToDelete, index) => {
+  const swiped = (direction, whoSwiped, index) => {
     console.debug(`${explorerProfiles[index].name} is swiped ${direction}`)
     setLastMatched(false)
     const match = Math.random() < 0.5
-    if ((direction === 'up' || direction === 'right') && match) {
-      setTimeout(() => {
-        console.debug(`It's a match with ${nameToDelete}`)
-        PubSub.publish('match', { name: explorerProfiles[index].name, image: explorerProfiles[index].image })
-        setLastMatched(true)
-        setLastMatchedId(index)
-      }, 1000)
+    if (direction === 'up' || direction === 'right') {
+      if (match) {
+        setTimeout(() => {
+          console.debug(`It's a match with ${whoSwiped.name}`)
+          dispatch(addMatched(whoSwiped))
+          PubSub.publish('match', whoSwiped)
+          setLastMatched(true)
+          setLastMatchedId(index)
+        }, 500)
+      } else {
+        dispatch(addLiked(whoSwiped))
+      }
     }
 
     setLastDirection(direction)
@@ -110,7 +120,7 @@ function Explorer() {
           ref={childRefs[index]}
           className='swipe'
           key={profile.id}
-          onSwipe={(dir) => swiped(dir, profile.name, index)}
+          onSwipe={(dir) => swiped(dir, profile, index)}
           onCardLeftScreen={() => outOfFrame(profile.name, index)}
           preventSwipe={['up', 'down']}>
           <ExplorerImage

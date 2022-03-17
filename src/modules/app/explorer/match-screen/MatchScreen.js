@@ -34,8 +34,8 @@ function MatchScreen() {
     setIsOpen(false)
     isOpenRef.current = false
     if (queue.length > 0) {
-      const { name, image } = queue.shift()
-      setTimeout(() => openMatch({ name, image }), 500)
+      // Todo: resolve this queue
+      queue.shift()
     }
   }
 
