@@ -13,6 +13,7 @@ import Bottom from './components/Bottom'
 import Explore from './Explore'
 import MyLikes from './MyLikes'
 import NotFound from './NotFound'
+import Loading from './Loading'
 
 function App() {
   const height100vh = use100vh()
@@ -32,6 +33,7 @@ function App() {
         </div>
         <Bottom/>
       </div>
+      <Loading/>
     </BrowserRouter>
   )
 }
