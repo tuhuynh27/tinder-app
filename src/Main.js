@@ -6,13 +6,13 @@ import {
   Route
 } from 'react-router-dom'
 
-import LandingPage from './LandingPage'
-import Explore from 'modules/app/Explore'
-import MyLikes from 'modules/app/MyLikes'
-import NotFound from 'modules/app/NotFound'
-import Layout from 'modules/app/Layout'
+import LandingPage from './modules/landingpage/LandingPage'
+import Explore from './modules/app/Explore'
+import MyLikes from './modules/app/MyLikes'
+import NotFound from './modules/app/NotFound'
+import Layout from './modules/app/Layout'
 
-function App() {
+function Main() {
   return (
     <BrowserRouter>
       <Routes>
@@ -27,4 +27,4 @@ function App() {
   )
 }
 
-export default App
+export default Main
