@@ -49,6 +49,12 @@ const db = [
     age: 'K15',
     bio: 'There is never a time or place for true love. It happens accidentally, in a heartbeat, in a single flashing, throbbing moment',
     image: 'https://images-ssl.gotinder.com/5fcfaead95fef0010068946b/640x800_5ce9a7eb-bb7c-42bf-ba54-b12914e3831e.jpg'
+  },
+  {
+    name: 'Linh',
+    age: 'K15',
+    bio: 'I saw that you were perfect, and so I loved you. Then I saw that you were not perfect and I loved you even more.',
+    image: 'https://i.imgur.com/ZHAn1uy.jpg'
   }
 ]
 
