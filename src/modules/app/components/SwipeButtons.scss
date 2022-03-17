@@ -1,0 +1,121 @@
+.swipe-buttons {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  button {
+    background: transparent;
+    border: 0;
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border-style: solid;
+      border-width: 1px;
+      background-color: transparent;
+    }
+
+    &.small {
+      width: 46px;
+      height: 46px;
+    }
+
+    &.back {
+      $back-color: #f8a81f;
+      div {
+        border-color: $back-color;
+      }
+      svg {
+        fill: $back-color;
+      }
+    }
+
+    &.left {
+      $left-color: #ff4458;
+      div {
+        border-color: $left-color;
+      }
+      svg {
+        fill: $left-color;
+      }
+    }
+
+    &.super {
+      $super-color: #47a1ff;
+      div {
+        border-color: $super-color;
+      }
+      svg {
+        fill: $super-color;
+      }
+    }
+
+    &.right {
+      $right-color: #21d07c;
+      div {
+        border-color: $right-color;
+      }
+      svg {
+        fill: $right-color;
+      }
+    }
+
+    &.boost {
+      $boost-color: #9908e8;
+      div {
+        border-color: $boost-color;
+      }
+      svg {
+        fill: $boost-color;
+      }
+    }
+
+    &:active {
+      div {
+        svg {
+          transform: scale(1.5);
+        }
+      }
+
+      &.back {
+        div { background-color: orangered; }
+      }
+      &.left {
+        div { background-color: indianred; }
+      }
+      &.super {
+        div { background-color: white; }
+      }
+      &.right {
+        div { background-color: darkgreen; }
+      }
+      &.boost {
+        div { background-color: rebeccapurple; }
+      }
+    }
+  }
+
+  &.deactivate {
+    button {
+      div {
+        border-color: #d4d8de;
+        svg {
+          fill: #e9ebee;
+        }
+      }
+      pointer-events: none;
+    }
+    button.back {
+      pointer-events: auto;
+    }
+  }
+}

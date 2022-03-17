@@ -1,6 +1,8 @@
+import './MyLikes.scss'
+
 export default function MyLikes() {
   return (
-    <div className="central">
+    <div className="mylikes-page">
       <svg focusable="false" aria-hidden="true" role="presentation" viewBox="0 0 24 24" width="60px" height="60px"
            className="Sq(60px)">
         <path

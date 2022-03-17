@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './Match.scss'
 
 import PubSub from 'pubsub-js'
 

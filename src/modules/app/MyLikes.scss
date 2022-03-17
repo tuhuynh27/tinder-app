@@ -1,0 +1,14 @@
+.mylikes-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .msg {
+    p {
+      color: #505965;
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+}

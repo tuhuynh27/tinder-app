@@ -1,6 +1,8 @@
+import './NotFound.scss'
+
 export default function NotFound() {
   return (
-    <div className="empty">
+    <div className="notfound-page">
       <div className="profile-outer-ring">
         <div className="profile-image">
           <img alt="Bubble"

@@ -1,0 +1,19 @@
+.layout-bottom {
+  height: 48px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  div {
+    svg {
+      fill: #7c8591;
+    }
+  }
+  .active {
+    svg {
+      fill: #ff4458;
+    }
+  }
+}

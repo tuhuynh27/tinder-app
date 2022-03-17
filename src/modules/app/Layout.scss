@@ -1,0 +1,14 @@
+.app-layout {
+  position: relative;
+  max-width: 894px;
+  margin: auto;
+
+  .outlet-container {
+    height: calc(100vh - 48px - 48px);
+    padding: 0 5px;
+    position: relative;
+    display: grid;
+    grid-template: 1fr / 1fr;
+    background-color: #F6F7F8;
+  }
+}

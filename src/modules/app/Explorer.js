@@ -1,12 +1,14 @@
 import React, { useState, useRef, useMemo } from 'react'
+import './Explorer.scss'
 
 import PubSub from 'pubsub-js'
 
 import TinderCard from 'react-tinder-card'
 
-import Image from './components/Image'
-import Button from './components/Buttons'
+import ExplorerImage from './components/ExplorerImage'
+import Button from './components/SwipeButtons'
 import Match from './Match'
+import NotFound from './NotFound'
 
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;
@@ -60,7 +62,7 @@ const db = [
 
 shuffle(db)
 
-export default function Explore() {
+export default function Explorer() {
   const [currentIndex, setCurrentIndex] = useState(db.length - 1)
   const [lastDirection, setLastDirection] = useState()
   const [lastMatched, setLastMatched] = useState(false)
@@ -132,19 +134,12 @@ export default function Explore() {
           onSwipe={(dir) => swiped(dir, character.name, index)}
           onCardLeftScreen={() => outOfFrame(character.name, index)}
           preventSwipe={['up', 'down']}>
-          <Image
+          <ExplorerImage
             name={character.name} age={character.age}
             bio={character.bio}
             image={character.image} />
         </TinderCard>)}
-      {!canSwipe && <div className="empty">
-        <div className="profile-outer-ring">
-          <div className="profile-image">
-            <img alt="Bubble"
-                 src="https://ca.slack-edge.com/T0GCQ370X-USZH19XRQ-48946bdcb330-512"/>
-          </div>
-        </div>
-      </div>}
+      {!canSwipe && <NotFound/>}
       <Button canSwipe={canSwipe} canGoback={canGoBack}
               goBack={() => goBack()}
               swipeLeft={() => swipe('left')}

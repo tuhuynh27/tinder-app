@@ -1,0 +1,29 @@
+.explore-image {
+  height: 100%;
+  border-radius: 8px;
+  display: flex;
+  background-size: cover;
+
+  .information {
+    align-self: flex-end;
+    margin-bottom: calc(20px + 62px + 35px);
+    color: white;
+    line-height: 24px;
+
+    &>div {
+      padding: 0 18px;
+    }
+
+    .info {
+      margin-bottom: 10px;
+      .name {
+        font-size: 32px;
+        font-weight: bold;
+        margin-right: 12px;
+      }
+      .age {
+        font-size: 24px;
+      }
+    }
+  }
+}

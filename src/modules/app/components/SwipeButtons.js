@@ -1,8 +1,9 @@
 import React from 'react'
+import './SwipeButtons.scss'
 
-export default function Buttons({ canSwipe, canGoBack, swipeLeft, swipeUp, swipeRight, goBack }) {
+export default function SwipeButtons({ canSwipe, canGoBack, swipeLeft, swipeUp, swipeRight, goBack }) {
   return (
-    <div className={`buttons ${canSwipe ? 'active' : 'deactivate' }`}>
+    <div className={`swipe-buttons ${canSwipe ? 'active' : 'deactivate' }`}>
       <button className="back" onClick={() => goBack()} style={{ pointerEvent: canGoBack ? 'auto' : 'none' }}>
         <div style={{ width: '46px', height: '46px' }}>
             <svg focusable="false" aria-hidden="true" role="presentation" viewBox="0 0 24 24" width="24px" height="24px"

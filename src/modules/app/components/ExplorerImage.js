@@ -1,8 +1,8 @@
-import React from 'react'
+import './ExplorerImage.scss'
 
-export default function Image({ name, age, bio, image }) {
+export default function ExplorerImage({ name, age, bio, image }) {
   return (
-    <div className="image"
+    <div className="explore-image"
          style={{ background: `linear-gradient(to bottom, rgba(0,0,0,0) 20%, rgba(0,0,0,1)), url('${image}')`,
            backgroundPosition: '50% 50%',
            backgroundSize: 'auto 100%' }}>

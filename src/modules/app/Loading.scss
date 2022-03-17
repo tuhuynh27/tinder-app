@@ -1,0 +1,33 @@
+.load-screen {
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  height: 100%;
+  width: 100%;
+  max-width: 894px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 95%) #ff4458;
+
+  img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: auto;
+    animation: pulse 0.75s linear infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: translate(-50%,-50%) scale(1);
+    }
+
+    50% {
+      transform: translate(-50%,-50%)scale(1.2);
+    }
+
+    100% {
+      transform: translate(-50%,-50%) scale(1);
+    }
+  }
+}

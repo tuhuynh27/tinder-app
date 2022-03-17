@@ -1,0 +1,73 @@
+.notfound-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  .profile-outer-ring {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(1);
+    top: calc(50% - 35px);
+    left: calc(50% - 35px);
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+
+    &:after {
+      content: "";
+      width: 70px;
+      height: 70px;
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      border: 0;
+      background-color: #e9ebee80;
+      border-radius: 50%;
+      animation-duration: 1.5s;
+      animation-name: bubble-bounce;
+      animation-iteration-count: infinite;
+    }
+  }
+
+  .profile-image {
+    width: 70px;
+    height: 70px;
+    background: #F2F2F2;
+    position: relative;
+    border-radius: 50%;
+    top: calc(50% - 35px);
+    left: calc(50% - 35px);
+    z-index: 999;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      animation: spin 5s infinite linear;
+    }
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(359deg);
+    }
+  }
+
+  @keyframes bubble-bounce {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    87% {
+      transform: scale(5);
+      opacity: 1;
+    }
+    100% {
+      opacity: 0
+    }
+  }
+}

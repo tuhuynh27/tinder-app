@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import './LayoutBottom.scss'
+
 import { useNavigate, useLocation } from 'react-router-dom'
 
-export default function Bottom() {
+export default function LayoutBottom() {
   const navigate = useNavigate()
   const { pathname } = useLocation();
   const [selected, setSelected] = useState(0)
@@ -34,7 +36,7 @@ export default function Bottom() {
   }
 
   return (
-    <div className="bottom">
+    <div className="layout-bottom">
       <div className={selected === 0 ? 'active' : 'none'} onClick={() => select(0)}>
         <svg focusable="false" aria-hidden="true" role="presentation" viewBox="0 0 24 24" width="28px" height="28px"
              className="Sq(28px) navbarActive_C($c-pink) C($c-ds-gray-50) Trsdu($fast)">

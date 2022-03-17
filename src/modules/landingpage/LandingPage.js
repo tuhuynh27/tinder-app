@@ -1,4 +1,5 @@
 import React from 'react'
+import './LandingPage.scss'
 import { useNavigate } from 'react-router-dom'
 
 import LogoWhite from 'assets/img/logo_white.png'
