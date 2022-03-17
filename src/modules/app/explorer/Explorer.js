@@ -15,6 +15,8 @@ import { addMatched, addLiked } from 'modules/app/explorer/redux/matchedSlice'
 
 import PubSub from 'pubsub-js'
 
+import { openProfile } from 'utils/openProfile'
+
 function Explorer() {
   const dispatch = useDispatch()
 
@@ -123,17 +125,16 @@ function Explorer() {
           onSwipe={(dir) => swiped(dir, profile, index)}
           onCardLeftScreen={() => outOfFrame(profile.name, index)}
           preventSwipe={['up', 'down']}>
-          <ExplorerImage
-            name={profile.name} age={profile.age}
-            bio={profile.bio}
-            image={profile.image} />
+          <ExplorerImage profile={profile}/>
         </TinderCard>)}
       {!canSwipe && <NotFound/>}
       <Button canSwipe={canSwipe} canGoback={canGoBack}
         goBack={() => goBack()}
         swipeLeft={() => swipe('left')}
         swipeUp={() => swipe('up')}
-        swipeRight={() => swipe('right')} />
+        swipeRight={() => swipe('right')}
+        openProfile={() => openProfile(explorerProfiles[currentIndex])}
+      />
       <MatchScreen/>
     </React.Fragment>
   )

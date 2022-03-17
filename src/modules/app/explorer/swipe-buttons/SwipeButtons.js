@@ -1,7 +1,7 @@
 import React from 'react'
 import './SwipeButtons.scss'
 
-function SwipeButtons({ canSwipe, canGoBack, swipeLeft, swipeUp, swipeRight, goBack }) {
+function SwipeButtons({ canSwipe, canGoBack, swipeLeft, swipeUp, swipeRight, goBack, openProfile }) {
   return (
     <div className={`swipe-buttons ${canSwipe ? 'active' : 'deactivate' }`}>
       <button className="back" onClick={() => goBack()} style={{ pointerEvent: canGoBack ? 'auto' : 'none' }}>
@@ -49,6 +49,13 @@ function SwipeButtons({ canSwipe, canGoBack, swipeLeft, swipeUp, swipeRight, goB
           </svg>
         </div>
       </button>
+      {canSwipe && <div className="open-profile-button" onClick={() => openProfile()}>
+        <svg focusable="false" aria-hidden="true" role="presentation" viewBox="0 0 24 24" width="28px" height="28px"
+             className="Expand">
+          <path fill="#fff"
+                d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+        </svg>
+      </div>}
     </div>
   )
 }

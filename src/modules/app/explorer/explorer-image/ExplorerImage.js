@@ -1,6 +1,8 @@
 import './ExplorerImage.scss'
 
-function ExplorerImage({ name, age, bio, image }) {
+function ExplorerImage({ profile }) {
+  const { name, age, bio, image } = profile;
+
   return (
     <div className="explore-image"
          style={{ background: `linear-gradient(to bottom, rgba(0,0,0,0) 20%, rgba(0,0,0,1)), url('${image}')`,

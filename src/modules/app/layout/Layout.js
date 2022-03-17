@@ -7,6 +7,7 @@ import { Outlet } from 'react-router-dom'
 import LayoutNavbar from './layout-navbar/LayoutNavbar'
 import LayoutBottom from './layout-bottom/LayoutBottom'
 import Loading from './loading/Loading'
+import ProfilePopup from './profile-popup/ProfilePopup'
 
 function Layout() {
   const height100vh = use100vh()
@@ -21,6 +22,7 @@ function Layout() {
         <LayoutBottom/>
       </div>
       <Loading/>
+      <ProfilePopup/>
     </React.Fragment>
   )
 }

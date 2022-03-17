@@ -118,4 +118,10 @@
       pointer-events: auto;
     }
   }
+
+  .open-profile-button {
+    position: absolute;
+    bottom: calc(84px + 20px);
+    right: 20px;
+  }
 }

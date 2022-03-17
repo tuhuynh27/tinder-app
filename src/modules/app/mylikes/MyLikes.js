@@ -6,6 +6,8 @@ import { use100vh } from 'react-div-100vh'
 import { useSelector } from 'react-redux'
 import { selectListMatched, selectListLiked } from 'modules/app/explorer/redux/matchedSlice'
 
+import { openProfile } from 'utils/openProfile'
+
 function MyLikes() {
   const height100vh = use100vh()
 
@@ -28,6 +30,7 @@ function MyLikes() {
           {list.map(e => (
             <div className="profile-card"
                  key={e.id}
+                 onClick={() => openProfile(e)}
                  style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,1)), url('${e.image}')` }}>
               <div className="info">
                 <div><span>{e.name}</span>,&nbsp;

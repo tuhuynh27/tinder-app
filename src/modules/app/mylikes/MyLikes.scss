@@ -41,8 +41,9 @@
       $matches-table-item-height: calc(((100vw - 30px) / 2) * 1.25);
       width: $matches-table-item-width;
       height: $matches-table-item-height;
+      max-width: calc((894px - 30px) / 2);
+      max-height: calc(((894px - 30px) / 2) * 1.25);
 
-      background-image: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,1)), url('https://images-ssl.gotinder.com/5cc8603233baf11500856483/320x320_1b1148b8-a371-437c-8613-9920bf0684a1.jpg');
       background-position: 50% 50%;
       background-size: auto 100%;
       border-radius: 8px;
