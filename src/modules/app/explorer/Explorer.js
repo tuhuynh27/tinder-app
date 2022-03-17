@@ -7,7 +7,7 @@ import TinderCard from 'react-tinder-card'
 
 import ExplorerImage from './explorer-image/ExplorerImage'
 import Button from './swipe-buttons/SwipeButtons'
-import Match from '../match/Match'
+import MatchScreen from './match-screen/MatchScreen'
 import NotFound from '../notfound/NotFound'
 
 function shuffle(array) {
@@ -145,7 +145,7 @@ export default function Explorer() {
               swipeLeft={() => swipe('left')}
               swipeUp={() => swipe('up')}
               swipeRight={() => swipe('right')} />
-      <Match/>
+      <MatchScreen/>
     </React.Fragment>
   )
 }

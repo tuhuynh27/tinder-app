@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import './Match.scss'
+import './MatchScreen.scss'
 
 import PubSub from 'pubsub-js'
 
 import MatchImg from 'assets/img/match.png'
 
-export default function Match() {
+export default function MatchScreen() {
   const [isOpen, setIsOpen] = useState(false)
   const [name, setName] = useState('')
   const [image, setImage] = useState('')
