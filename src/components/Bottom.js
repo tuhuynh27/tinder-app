@@ -1,9 +1,20 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 export default function Bottom() {
   const navigate = useNavigate()
+  const { pathname } = useLocation();
   const [selected, setSelected] = useState(0)
+
+  useEffect(() => {
+    if (pathname === '/app') {
+      setSelected(0)
+    } else if (pathname === '/app/my-likes') {
+      setSelected(1)
+    } else if (pathname === '/app/matches') {
+      setSelected(2)
+    }
+  }, [pathname])
 
   function select(index) {
     setSelected(index)
