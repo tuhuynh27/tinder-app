@@ -315,10 +315,11 @@ body {
 
 .match-screen {
   position: fixed;
-  left: 0;
-  top: 0;
+  top: 50%; right: 50%;
+  transform: translate(50%,-50%);
   height: 100%;
   width: 100%;
+  max-width: 894px;
   background-position: 50% 50%;
   background-size: 173.442%;
 
