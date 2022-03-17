@@ -33,7 +33,12 @@
     display: flex;
     flex-wrap: wrap;
     align-content: baseline;
-    overflow: auto;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none; /* for Chrome, Safari, and Opera */
+    }
 
     .profile-card {
       margin: 5px;
