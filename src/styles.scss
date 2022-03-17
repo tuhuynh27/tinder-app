@@ -312,3 +312,48 @@ body {
     }
   }
 }
+
+.match-screen {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-position: 50% 50%;
+  background-size: 173.442%;
+
+  animation: 0.5s slide-up;
+
+  @keyframes slide-up {
+    from {
+      margin-top: 100%;
+      height: 100%;
+    }
+    to {
+      margin-top: 0%;
+      height: 100%;
+    }
+  }
+
+  .close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    fill: white;
+  }
+
+  img {
+    position: fixed;
+    bottom: 100px;
+    width: 80%;
+    padding: 0 10%;
+  }
+
+  p {
+    position: fixed;
+    bottom: 50px;
+    color: white;
+    width: 100%;
+    text-align: center;
+  }
+}
