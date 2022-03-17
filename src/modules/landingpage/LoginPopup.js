@@ -6,6 +6,7 @@ import Logo from 'assets/img/logo.png'
 
 function LoginPopup({ onClose, onLogin, onLoginTest }) {
   const responseGoogle = data => {
+    console.log(data)
     if (!data || !data.profileObj.email || !data.accessToken) return;
 
     onLogin({
