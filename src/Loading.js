@@ -13,7 +13,7 @@ export default function Loading() {
     <React.Fragment>
       {loading && (
         <div className="load-screen">
-          <img src="/icon_white.png" alt="Loading" />
+          <img src="/logo_white.png" alt="Loading" />
         </div>
       )}
     </React.Fragment>

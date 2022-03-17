@@ -396,9 +396,9 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 80px;
+    width: 150px;
     height: auto;
-    animation: pulse 1s linear infinite;
+    animation: pulse 0.75s linear infinite;
   }
 
   @keyframes pulse {
@@ -451,13 +451,28 @@ body {
     bottom: 100px;
     width: 80%;
     padding: 0 10%;
+    animation: match-pulse 0.7s linear;
+
+    @keyframes match-pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
   }
 
   p {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: lighter;
     position: fixed;
-    bottom: 15px;
+    bottom: 80px;
     color: white;
     width: 100%;
     text-align: center;

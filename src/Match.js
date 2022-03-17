@@ -17,7 +17,7 @@ export default function Match() {
 
   return (
     <React.Fragment>
-      {isOpen && <div className="match-screen" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0) 20%, rgba(0,0,0,1)), url('${image}')` }}>
+      {isOpen && <div className="match-screen" style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,1)), url('${image}')` }}>
         <div className="close" onClick={() => setIsOpen(false)}>
           <svg focusable="false" aria-hidden="true" role="presentation" viewBox="0 0 24 24" width="20px" height="20px"
                className="Sq(24px) P(4px)">

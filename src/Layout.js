@@ -1,9 +1,9 @@
+import React from 'react'
 import { use100vh } from 'react-div-100vh'
 import { Outlet } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Bottom from './components/Bottom'
 import Loading from './Loading'
-import React from 'react'
 
 export default function Layout() {
   const height100vh = use100vh()

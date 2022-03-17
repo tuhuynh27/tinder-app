@@ -1,3 +1,4 @@
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function LandingPage() {
@@ -16,7 +17,7 @@ export default function LandingPage() {
       </div>
       <div className="bottom">
         <p>
-         Only students with email @fpt.edu.vn can log in
+          Only students with email @fpt.edu.vn can log in
         </p>
 
         <p>
