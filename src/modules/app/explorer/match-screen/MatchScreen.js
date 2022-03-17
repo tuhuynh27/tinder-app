@@ -5,7 +5,7 @@ import PubSub from 'pubsub-js'
 
 import MatchImg from 'assets/img/match.png'
 
-export default function MatchScreen() {
+function MatchScreen() {
   const [isOpen, setIsOpen] = useState(false)
   const [name, setName] = useState('')
   const [image, setImage] = useState('')
@@ -34,3 +34,5 @@ export default function MatchScreen() {
     </React.Fragment>
   )
 }
+
+export default MatchScreen

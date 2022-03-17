@@ -62,7 +62,7 @@ const db = [
 
 shuffle(db)
 
-export default function Explorer() {
+function Explorer() {
   const [currentIndex, setCurrentIndex] = useState(db.length - 1)
   const [lastDirection, setLastDirection] = useState()
   const [lastMatched, setLastMatched] = useState(false)
@@ -141,11 +141,13 @@ export default function Explorer() {
         </TinderCard>)}
       {!canSwipe && <NotFound/>}
       <Button canSwipe={canSwipe} canGoback={canGoBack}
-              goBack={() => goBack()}
-              swipeLeft={() => swipe('left')}
-              swipeUp={() => swipe('up')}
-              swipeRight={() => swipe('right')} />
+        goBack={() => goBack()}
+        swipeLeft={() => swipe('left')}
+        swipeUp={() => swipe('up')}
+        swipeRight={() => swipe('right')} />
       <MatchScreen/>
     </React.Fragment>
   )
 }
+
+export default Explorer

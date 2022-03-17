@@ -3,7 +3,7 @@ import './LayoutBottom.scss'
 
 import { useNavigate, useLocation } from 'react-router-dom'
 
-export default function LayoutBottom() {
+function LayoutBottom() {
   const navigate = useNavigate()
   const { pathname } = useLocation();
   const [selected, setSelected] = useState(0)
@@ -63,3 +63,5 @@ export default function LayoutBottom() {
     </div>
   )
 }
+
+export default LayoutBottom

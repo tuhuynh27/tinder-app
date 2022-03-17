@@ -1,6 +1,6 @@
 import './ExplorerImage.scss'
 
-export default function ExplorerImage({ name, age, bio, image }) {
+function ExplorerImage({ name, age, bio, image }) {
   return (
     <div className="explore-image"
          style={{ background: `linear-gradient(to bottom, rgba(0,0,0,0) 20%, rgba(0,0,0,1)), url('${image}')`,
@@ -18,3 +18,5 @@ export default function ExplorerImage({ name, age, bio, image }) {
     </div>
   )
 }
+
+export default ExplorerImage

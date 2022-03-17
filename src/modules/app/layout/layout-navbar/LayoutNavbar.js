@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 import Logo from 'assets/img/logo.png'
 
-export default function LayoutNavbar() {
+function LayoutNavbar() {
   return (
     <div className="layout-navbar">
       <div className="profile"/>
@@ -13,3 +13,5 @@ export default function LayoutNavbar() {
     </div>
   )
 }
+
+export default LayoutNavbar

@@ -8,7 +8,7 @@ import LayoutNavbar from './layout-navbar/LayoutNavbar'
 import LayoutBottom from './layout-bottom/LayoutBottom'
 import Loading from './loading/Loading'
 
-export default function Layout() {
+function Layout() {
   const height100vh = use100vh()
 
   return (
@@ -24,3 +24,5 @@ export default function Layout() {
     </React.Fragment>
   )
 }
+
+export default Layout

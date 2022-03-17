@@ -1,6 +1,6 @@
 import './NotFound.scss'
 
-export default function NotFound() {
+function NotFound() {
   return (
     <div className="notfound-page">
       <div className="profile-outer-ring">
@@ -12,3 +12,5 @@ export default function NotFound() {
     </div>
   );
 }
+
+export default NotFound

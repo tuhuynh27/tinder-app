@@ -1,7 +1,7 @@
 import React from 'react'
 import './SwipeButtons.scss'
 
-export default function SwipeButtons({ canSwipe, canGoBack, swipeLeft, swipeUp, swipeRight, goBack }) {
+function SwipeButtons({ canSwipe, canGoBack, swipeLeft, swipeUp, swipeRight, goBack }) {
   return (
     <div className={`swipe-buttons ${canSwipe ? 'active' : 'deactivate' }`}>
       <button className="back" onClick={() => goBack()} style={{ pointerEvent: canGoBack ? 'auto' : 'none' }}>
@@ -52,3 +52,5 @@ export default function SwipeButtons({ canSwipe, canGoBack, swipeLeft, swipeUp, 
     </div>
   )
 }
+
+export default SwipeButtons

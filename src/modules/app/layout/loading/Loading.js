@@ -3,7 +3,7 @@ import './Loading.scss'
 
 import LogoWhite from 'assets/img/logo_white.png'
 
-export default function Loading() {
+function Loading() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -22,3 +22,5 @@ export default function Loading() {
     </React.Fragment>
   )
 }
+
+export default Loading

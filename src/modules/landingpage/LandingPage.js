@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import LogoWhite from 'assets/img/logo_white.png'
 
-export default function LandingPage() {
+function LandingPage() {
   const navigate = useNavigate()
 
   function login() {
@@ -30,3 +30,5 @@ export default function LandingPage() {
     </div>
   )
 }
+export default LandingPage
+
