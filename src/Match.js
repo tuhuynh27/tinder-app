@@ -27,7 +27,7 @@ export default function Match() {
           </svg>
         </div>
         <img src="./match.png" alt="Match"/>
-        <p>{name} cũng thích bạn!</p>
+        <p>{name} liked you too!</p>
       </div>}
     </React.Fragment>
   )

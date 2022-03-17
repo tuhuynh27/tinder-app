@@ -19,7 +19,7 @@ body {
     height: 32px;
     background-image: url(https://ca.slack-edge.com/T0GCQ370X-USZH19XRQ-48946bdcb330-512);
     background-position: 50% 50%;
-    background-size: auto 126.19%;
+    background-size: cover;
   }
 
   .navbar {
@@ -143,6 +143,7 @@ body {
         height: 100%;
         border-radius: 8px;
         display: flex;
+        background-size: cover;
 
         .actions {
           align-self: flex-end;
@@ -321,7 +322,7 @@ body {
   width: 100%;
   max-width: 894px;
   background-position: 50% 50%;
-  background-size: 173.442%;
+  background-size: cover;
 
   animation: 0.5s slide-up;
 
@@ -351,8 +352,10 @@ body {
   }
 
   p {
+    font-size: 24px;
+    font-weight: lighter;
     position: fixed;
-    bottom: 50px;
+    bottom: 15px;
     color: white;
     width: 100%;
     text-align: center;
