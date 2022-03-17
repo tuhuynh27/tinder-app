@@ -3,7 +3,7 @@ import './Explorer.scss'
 
 import PubSub from 'pubsub-js'
 
-import TinderCard from 'react-tinder-card'
+import TinderCard from 'animation/swipe'
 
 import ExplorerImage from './explorer-image/ExplorerImage'
 import Button from './swipe-buttons/SwipeButtons'
