@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
+import LogoWhite from 'assets/img/logo_white.png'
+
 export default function Loading() {
   const [loading, setLoading] = useState(true)
 
@@ -13,7 +15,7 @@ export default function Loading() {
     <React.Fragment>
       {loading && (
         <div className="load-screen">
-          <img src="/logo_white.png" alt="Loading" />
+          <img src={LogoWhite} alt="Loading" />
         </div>
       )}
     </React.Fragment>
