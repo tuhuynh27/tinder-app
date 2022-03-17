@@ -20,7 +20,7 @@ export default function LandingPage() {
         </p>
 
         <p>
-          Developed by <a href="https://tuhuynh.com" target="_blank">Tu Huynh</a> &copy; 2022 @ fuhcm.com
+          Developed by <a href="https://tuhuynh.com" target="_blank" rel="noreferrer">Tu Huynh</a> &copy; 2022 @ fuhcm.com
         </p>
       </div>
     </div>
