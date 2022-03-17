@@ -17,7 +17,6 @@ function Layout() {
   const isAuthenticated = useSelector(selectIsAuthenticated)
 
   useEffect(() => {
-    console.log(isAuthenticated)
     if (!isAuthenticated) {
       navigate('/')
     }
