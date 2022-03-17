@@ -1,0 +1,104 @@
+.matches-screen {
+  width: 100%;
+  overflow: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 1¢px;
+    padding: 20px 10px 10px 10px;
+  }
+
+  .matches-list {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none; /* for Chrome, Safari, and Opera */
+    }
+
+    .profile-card {
+      width: 90px;
+      min-width: 90px;
+      height: 145px;
+      min-height: 145px;
+      margin: 5px;
+
+      &:first-child {
+        margin-left: 10px;
+      }
+
+      &:last-child {
+        margin-right: 20px;
+      }
+
+      .image {
+        width: 90px;
+        height: 120px;
+        margin-left: 6px;
+        margin-right: 6px;
+        background-size: cover;
+        background-position: 50% 0;
+        border-radius: 4px;
+      }
+
+      .name {
+        margin-top: 4px;
+        text-align: center;
+        max-width: 100px;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  .messages-list {
+    .message-item {
+      display: flex;
+      flex-direction: row;
+
+      .image-wrapper {
+        padding: 8px 12px;
+
+        .image {
+          width: 74px;
+          height: 74px;
+          border-radius: 50%;
+          background-position: 50% 50%;
+          background-size: cover;
+        }
+      }
+
+      .details {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-bottom: 1px solid #d4d8de;
+
+        .name {
+          font-weight: bold;
+          overflow: hidden;
+        }
+
+        .last-message {
+          max-height: 48px;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          color: #505965;
+        }
+      }
+    }
+  }
+}

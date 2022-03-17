@@ -11,6 +11,7 @@ import Explorer from './modules/app/explorer/Explorer'
 import MyLikes from './modules/app/mylikes/MyLikes'
 import NotFound from './modules/app/notfound/NotFound'
 import Layout from './modules/app/layout/Layout'
+import Matches from './modules/app/matches/Matches'
 
 function Main() {
   return (
@@ -20,6 +21,7 @@ function Main() {
         <Route path="/app" element={<Layout/>}>
           <Route index element={<Explorer />}/>
           <Route path="my-likes" element={<MyLikes />}/>
+          <Route path="matches" element={<Matches />}/>
           <Route path="*" element={<NotFound/>} />
         </Route>
       </Routes>
