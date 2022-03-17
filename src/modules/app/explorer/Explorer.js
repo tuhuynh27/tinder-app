@@ -106,7 +106,7 @@ function Explorer() {
   const goBack = async () => {
     if (lastMatched || !canGoBack) return
     // Prevent back on profiles which matched already
-    if (currentIndex + 1 >= lastMatchedId) {
+    if (lastMatchedId !== -1 && currentIndex + 1 >= lastMatchedId) {
       return
     }
     const newIndex = currentIndex + 1
