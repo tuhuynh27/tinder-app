@@ -9,7 +9,7 @@ export default function LandingPage() {
 
   return (
     <div className="landing-page">
-      <img className="logo" src="/logo_white.png" alt="Logo" />
+      <img className="logo" src="/logo_white.png" rel="noreferrer" alt="Logo" />
       <div className="buttons" onClick={() => login()}>
         <button>Create account</button>
         <button className="login">Log in</button>

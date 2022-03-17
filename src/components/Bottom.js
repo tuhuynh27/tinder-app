@@ -28,6 +28,8 @@ export default function Bottom() {
       case 2:
         navigate('/app/matches')
         break
+      default:
+        break
     }
   }
 
