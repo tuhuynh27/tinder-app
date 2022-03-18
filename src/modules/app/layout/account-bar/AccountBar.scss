@@ -22,6 +22,7 @@
     }
 
     .avatar-wrapper {
+      cursor: pointer;
       position: relative;
       margin-top: 65px;
       width: 100%;
@@ -84,6 +85,7 @@
       justify-content: space-around;
 
       .button {
+        cursor: pointer;
         position: relative;
         width: 48px;
         height: 48px;
@@ -142,5 +144,34 @@
       font-size: 14px;
       box-shadow: 0 2px 6px 0 rgb(101 110 123 / 12%);
     }
+  }
+}
+
+.edit-info-anim-enter {
+}
+.edit-info-anim-enter-active {
+  animation: edit-info-slide-up 500ms forwards;
+}
+.edit-info-anim-exit {
+}
+.edit-info-anim-exit-active {
+  animation: 500ms edit-info-slide-down forwards;
+}
+
+@keyframes edit-info-slide-up {
+  from {
+    margin-top: 200%;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+
+@keyframes edit-info-slide-down {
+  from {
+    margin-top: 0;
+  }
+  to {
+    margin-top: 200%;
   }
 }

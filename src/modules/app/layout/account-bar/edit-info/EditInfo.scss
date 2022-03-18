@@ -1,0 +1,180 @@
+.edit-info {
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  height: 100%;
+  width: 100%;
+  max-width: 894px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
+  background-color: #F6F7F8;
+
+  .title {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+
+    h1 {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .done-button {
+      cursor: pointer;
+      position: absolute;
+      top: 25%;
+      right: 15px;
+
+      span {
+        font-weight: bold;
+        font-size: 14px;
+        color: #d6002f;
+      }
+    }
+  }
+
+  .menu {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+
+    div {
+      cursor: pointer;
+      height: 100%;
+      width: 100%;
+      border: 1px solid #d4d8de;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &:first-child {
+        border-right: 0;
+      }
+
+      &.active {
+        color: #d6002f;
+      }
+
+      span {
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .edit-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .current-photo {
+      position: relative;
+      margin: 10px auto;
+      width: calc(100vw - 10px);
+      max-width: 468px;
+      height: 500px;
+      border-radius: 10px;
+      background-size: cover;
+    }
+
+    .update-current-photo {
+      position: relative;
+      text-align: center;
+
+      p {
+        color: #505965;
+        font-size: 12px;
+      }
+
+      button {
+        cursor: pointer;
+        border: 0;
+        min-width: 280px;
+        min-height: 40px;
+        padding: 8px 12px;
+        box-shadow: 0 3px 4px 0 rgb(0 0 0 / 12%);
+        border-radius: 16px;
+        background: linear-gradient(45deg, #fd267a, #ff6036);
+        text-transform: uppercase;
+        color: white;
+        font-weight: lighter;
+        font-size: 14px;
+      }
+    }
+
+    .update-bio {
+      position: relative;
+      margin-top: 10px;
+      margin-bottom: 25px;
+      display: flex;
+      flex-direction: column;
+      max-width: 468px;
+
+      .bio-title {
+        color: #505965;
+        text-transform: uppercase;
+        margin: 10px 15px;
+        font-size: 13px;
+      }
+
+      .bio-textarea {
+        text-align: center;
+
+        textarea {
+          color: #21262e;
+          font-family: 'Noto Sans', sans-serif;
+          font-size: 14px;
+          width: calc(100vw - 20px);
+          max-width: 436px;
+          height: 84px;
+          padding: 10px;
+          background: white;
+          border: 0;
+          resize: none;
+          outline: none;
+        }
+      }
+
+      .bio-desc {
+        padding: 0 10px;
+        p {
+          color: #505965;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .preview-section {
+    margin-top: 10px;
+    height: calc(100vh - 48px - 48px - 96px);
+
+    .explore-image {
+      .information {
+        margin-bottom: 25px;
+      }
+    }
+
+    .open-profile-button {
+      cursor: pointer;
+      position: absolute;
+      bottom: calc(84px + 20px);
+      right: 20px;
+    }
+  }
+}

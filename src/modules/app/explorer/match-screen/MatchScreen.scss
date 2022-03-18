@@ -55,14 +55,14 @@
 .match-screen-anim-enter-active {
   opacity: 1;
   animation: match-screen-slide-up 500ms forwards;
-  transition: opacity 300ms, transform 300ms;
+  transition: opacity 300ms, transform 500ms;
 }
 .match-screen-anim-exit {
 }
 .match-screen-anim-exit-active {
   animation: match-screen-slide-down 500ms forwards;
   opacity: 0;
-  transition: opacity 200ms;
+  transition: opacity 500ms;
 }
 
 @keyframes match-screen-slide-up {
