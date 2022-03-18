@@ -18,6 +18,7 @@
   }
 
   .login-close-button {
+    cursor: pointer;
     position: absolute;
     top: 20px;
     right: 20px;
@@ -56,6 +57,7 @@
     align-items: center;
 
     button {
+      cursor: pointer;
       max-width: 315px;
       border: 2px solid #505965;
       background: white;
