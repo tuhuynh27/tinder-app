@@ -214,8 +214,10 @@ const TinderCard = React.forwardRef(({
       const emptyFunc = () => {}
       element.current.addEventListener(('click'), onClickHandler ? onClickHandler : emptyFunc)
 
+      const cleanupNode = element.current
+
       return () => {
-        element.current.removeEventListener(('click'), onClickHandler ? onClickHandler : emptyFunc)
+        cleanupNode.removeEventListener(('click'), onClickHandler ? onClickHandler : emptyFunc)
       }
     } else {
       let offset = { x: null, y: null }
@@ -297,17 +299,20 @@ const TinderCard = React.forwardRef(({
       }
       element.current.addEventListener(('mouseleave'), mouseLeaveHandler)
 
+      const cleanupNode = element.current
+
       return () => {
-        element.current.removeEventListener(('touchstart'), touchStartHandler)
-        element.current.removeEventListener(('mousedown'), mouseDownHandler)
-        element.current.removeEventListener(('touchmove'), touchMoveHandler)
-        element.current.removeEventListener(('mousemove'), mouseMoveHandler)
-        element.current.removeEventListener(('touchend'), touchEndHandler)
-        element.current.removeEventListener(('mouseup'), mouseUpHandler)
-        element.current.removeEventListener(('mouseleave'), mouseLeaveHandler)
+        cleanupNode.removeEventListener(('touchstart'), touchStartHandler)
+        cleanupNode.removeEventListener(('mousedown'), mouseDownHandler)
+        cleanupNode.removeEventListener(('touchmove'), touchMoveHandler)
+        cleanupNode.removeEventListener(('mousemove'), mouseMoveHandler)
+        cleanupNode.removeEventListener(('touchend'), touchEndHandler)
+        cleanupNode.removeEventListener(('mouseup'), mouseUpHandler)
+        cleanupNode.removeEventListener(('mouseleave'), mouseLeaveHandler)
       }
     }
-  }, [handleSwipeReleased, handleSwipeStart, onSwipeRequirementFulfilled, onSwipeRequirementUnfulfilled, swipeRequirementType])
+  }, [handleSwipeReleased, handleSwipeStart, onSwipeRequirementFulfilled, onSwipeRequirementUnfulfilled,
+    swipeRequirementType, disableSwipe, onClickHandler])
   // TODO fix so swipeRequirementType can be changed on the fly. Pass as dependency cleanup eventlisteners and update new eventlisteners.
 
   return (
