@@ -1,7 +1,9 @@
 import React from 'react'
 import './SwipeButtons.scss'
 
-function SwipeButtons({ canSwipe, canGoBack, swipeLeft, swipeUp, swipeRight, goBack, openProfile }) {
+function SwipeButtons({canSwipe, canGoBack, swipeLeft, swipeUp, swipeRight,
+                        swipeLeftRef, swipeUpRef, swipeRightRef,
+                        goBack, openProfile }) {
   return (
     <div className={`swipe-buttons ${canSwipe ? 'active' : 'deactivate' }`}>
       <button className="back" onClick={() => goBack()} style={{ pointerEvent: canGoBack ? 'auto' : 'none' }}>
@@ -13,7 +15,7 @@ function SwipeButtons({ canSwipe, canGoBack, swipeLeft, swipeUp, swipeRight, goB
             </svg>
         </div>
       </button>
-      <button className="left" onClick={() => swipeLeft()}>
+      <button className="left" onClick={() => swipeLeft()} ref={swipeLeftRef}>
         <div>
           <svg focusable="false" aria-hidden="true" role="presentation" viewBox="0 0 24 24" width="29px"
                height="29px" className="Scale(.5) Expand">
@@ -22,7 +24,7 @@ function SwipeButtons({ canSwipe, canGoBack, swipeLeft, swipeUp, swipeRight, goB
           </svg>
         </div>
       </button>
-      <button className="super" onClick={() => swipeUp()}>
+      <button className="super" onClick={() => swipeUp()} ref={swipeUpRef}>
         <div style={{ width: '46px', height: '46px' }}>
           <svg focusable="false" aria-hidden="true" role="presentation" viewBox="0 0 24 24" width="24px"
                height="24px" className="Scale(.6) Expand">
@@ -31,7 +33,7 @@ function SwipeButtons({ canSwipe, canGoBack, swipeLeft, swipeUp, swipeRight, goB
           </svg>
         </div>
       </button>
-      <button className="right" onClick={() => swipeRight()}>
+      <button className="right" onClick={() => swipeRight()} ref={swipeRightRef}>
         <div>
           <svg focusable="false" aria-hidden="true" role="presentation" viewBox="0 0 24 24" width="29"
                height="29px" className="Scale(.5) Expand">

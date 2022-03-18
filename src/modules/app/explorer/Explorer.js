@@ -25,6 +25,7 @@ function Explorer() {
   const [lastDirection, setLastDirection] = useState()
   const [lastMatched, setLastMatched] = useState(false)
   const [lastMatchedId, setLastMatchedId] = useState(-1)
+  const [isRunning, setIsRunning] = useState(false)
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex)
   const abortCheck = useRef(false)
@@ -35,6 +36,12 @@ function Explorer() {
         .fill(0)
         .map((i) => React.createRef()),
     [explorerProfiles.length]
+  )
+
+  const buttonRefs = useMemo(
+    () => Array(3)
+      .fill(0)
+      .map((i) => React.createRef()), []
   )
 
   const executeGetProfiles = () => {
@@ -49,6 +56,29 @@ function Explorer() {
   useEffect(() => {
     executeGetProfiles()
   }, [])
+
+  useEffect(() => {
+    function keyMapping(e) {
+      switch (e.keyCode) {
+        case 37:
+          buttonRefs[0].current.click()
+          break
+        case 38:
+          buttonRefs[1].current.click()
+          break
+        case 39:
+          buttonRefs[2].current.click()
+          break
+        default:
+          break
+      }
+    }
+
+    document.addEventListener('keydown', keyMapping)
+    return () => {
+      document.removeEventListener('keydown', keyMapping)
+    }
+  }, [buttonRefs])
 
   const updateCurrentIndex = (val) => {
     setCurrentIndex(val)
@@ -96,6 +126,13 @@ function Explorer() {
   }
 
   const swipe = async (dir) => {
+    if (isRunning) return
+    setIsRunning(true)
+    await internalSwipe(dir)
+    setIsRunning(false)
+  }
+
+  const internalSwipe = async (dir) => {
     console.debug('Last direction: ', lastDirection)
     if (canSwipe && currentIndex < explorerProfiles.length) {
       await childRefs[currentIndex].current.swipe(dir) // Swipe the card!
@@ -134,8 +171,11 @@ function Explorer() {
       <Button canSwipe={canSwipe} canGoback={canGoBack}
         goBack={() => goBack()}
         swipeLeft={() => swipe('left')}
+        swipeLeftRef={buttonRefs[0]}
         swipeUp={() => swipe('up')}
+        swipeUpRef={buttonRefs[1]}
         swipeRight={() => swipe('right')}
+        swipeRightRef={buttonRefs[2]}
         openProfile={() => openProfile(explorerProfiles[currentIndex])}
       />
       <MatchScreen/>

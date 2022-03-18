@@ -26,6 +26,22 @@ function MatchScreen() {
     })
   }, [])
 
+  useEffect(() => {
+    function keyMapping(e) {
+      switch (e.keyCode) {
+        case 27:
+          close()
+          break
+        default:
+          break
+      }
+    }
+    document.addEventListener('keydown', keyMapping)
+    return () => {
+      document.removeEventListener('keydown', keyMapping)
+    }
+  }, [])
+
   function openMatch({ name, image }) {
     setIsOpen(true)
     isOpenRef.current = true
