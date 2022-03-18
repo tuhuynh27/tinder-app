@@ -11,14 +11,15 @@ import Loading from './loading/Loading'
 import ProfilePopup from './profile-popup/ProfilePopup'
 import AccountBar from './account-bar/AccountBar'
 
-import { useSelector } from 'react-redux'
-import { selectIsAuthenticated } from 'modules/redux/authenSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectIsAuthenticated, doLogout } from 'modules/redux/authenSlice'
 
 import { CSSTransition } from 'react-transition-group'
 
 function Layout() {
   const height100vh = use100vh()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const isAuthenticated = useSelector(selectIsAuthenticated)
   const [isAccountBarOpen, setIsAccountBarOpen] = useState(false)
 
@@ -27,6 +28,11 @@ function Layout() {
       navigate('/')
     }
   }, [isAuthenticated, navigate])
+
+  function logout() {
+    dispatch(doLogout())
+    navigate('/')
+  }
 
   return (
     <React.Fragment>
@@ -46,10 +52,13 @@ function Layout() {
         classNames="account-bar-anim"
         unmountOnExit
       >
-        <AccountBar onClose={() => setIsAccountBarOpen(false)}/>
+        <AccountBar
+          onClose={() => setIsAccountBarOpen(false)}
+          onLogout={() => logout()}
+        />
       </CSSTransition>
     </React.Fragment>
   )
 }
 
-export default Layout
+export default React.memo(Layout)

@@ -71,4 +71,4 @@ function MatchScreen() {
   )
 }
 
-export default MatchScreen
+export default React.memo(MatchScreen)

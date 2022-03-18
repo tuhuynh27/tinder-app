@@ -7,7 +7,7 @@ const settings = {
   snapBackDuration: 300,
   maxTilt: 0,
   bouncePower: 0.2,
-  swipeThreshold: 200 // px/s
+  swipeThreshold: 300 // px/s
 }
 
 const getElementSize = (element) => {
@@ -71,7 +71,7 @@ const animateBack = async (element) => {
   await sleep(settings.snapBackDuration * 0.75)
   element.style.transform = 'none'
 
-  await sleep(settings.snapBackDuration)
+  await sleep(settings.snapBackDuration * 0.25)
   element.style.transition = '10ms'
 }
 
@@ -142,7 +142,12 @@ const mouseCoordinatesFromEvent = (e) => {
   return { x: e.clientX, y: e.clientY }
 }
 
-const TinderCard = React.forwardRef(({ flickOnSwipe = true, children, onSwipe, onCardLeftScreen, className, preventSwipe = [], swipeRequirementType = 'velocity', swipeThreshold = settings.swipeThreshold, onSwipeRequirementFulfilled, onSwipeRequirementUnfulfilled }, ref) => {
+const TinderCard = React.forwardRef(({
+                                       flickOnSwipe = true, children, onSwipe, onCardLeftScreen, className,
+                                       preventSwipe = [], swipeRequirementType = 'velocity',
+                                       swipeThreshold = settings.swipeThreshold, onSwipeRequirementFulfilled,
+                                       onSwipeRequirementUnfulfilled,
+                                       disableSwipe = false, onClickHandler = null }, ref) => {
   settings.swipeThreshold = swipeThreshold
   const swipeAlreadyReleased = React.useRef(false)
 
@@ -202,77 +207,106 @@ const TinderCard = React.forwardRef(({ flickOnSwipe = true, children, onSwipe, o
   }, [swipeAlreadyReleased])
 
   React.useLayoutEffect(() => {
-    let offset = { x: null, y: null }
-    let speed = { x: 0, y: 0 }
-    let lastLocation = { x: 0, y: 0, time: new Date().getTime() }
-    let mouseIsClicked = false
-    let swipeThresholdFulfilledDirection = 'none'
+    if (disableSwipe) {
+      if (!onClickHandler) {
+        console.warn('You have disabled swipe but not provided an onClickHandler')
+      }
+      const emptyFunc = () => {}
+      element.current.addEventListener(('click'), onClickHandler ? onClickHandler : emptyFunc)
 
-    element.current.addEventListener(('touchstart'), (ev) => {
-      ev.preventDefault()
-      handleSwipeStart()
-      offset = { x: -touchCoordinatesFromEvent(ev).x, y: -touchCoordinatesFromEvent(ev).y }
-    })
+      return () => {
+        element.current.removeEventListener(('click'), onClickHandler ? onClickHandler : emptyFunc)
+      }
+    } else {
+      let offset = { x: null, y: null }
+      let speed = { x: 0, y: 0 }
+      let lastLocation = { x: 0, y: 0, time: new Date().getTime() }
+      let mouseIsClicked = false
+      let swipeThresholdFulfilledDirection = 'none'
 
-    element.current.addEventListener(('mousedown'), (ev) => {
-      ev.preventDefault()
-      mouseIsClicked = true
-      handleSwipeStart()
-      offset = { x: -mouseCoordinatesFromEvent(ev).x, y: -mouseCoordinatesFromEvent(ev).y }
-    })
+      const touchStartHandler = (ev) => {
+        ev.preventDefault()
+        handleSwipeStart()
+        offset = { x: -touchCoordinatesFromEvent(ev).x, y: -touchCoordinatesFromEvent(ev).y }
+      }
+      element.current.addEventListener(('touchstart'), touchStartHandler)
 
-    const handleMove = (coordinates) => {
-      // Check fulfillment
-      if (onSwipeRequirementFulfilled || onSwipeRequirementUnfulfilled) {
-        const dir = getSwipeDirection(swipeRequirementType === 'velocity' ? speed : getTranslate(element.current))
-        if (dir !== swipeThresholdFulfilledDirection) {
-          swipeThresholdFulfilledDirection = dir
-          if (swipeThresholdFulfilledDirection === 'none') {
-            if (onSwipeRequirementUnfulfilled) onSwipeRequirementUnfulfilled()
-          } else {
-            if (onSwipeRequirementFulfilled) onSwipeRequirementFulfilled(dir)
+      const mouseDownHandler = (ev) => {
+        ev.preventDefault()
+        mouseIsClicked = true
+        handleSwipeStart()
+        offset = { x: -mouseCoordinatesFromEvent(ev).x, y: -mouseCoordinatesFromEvent(ev).y }
+      }
+      element.current.addEventListener(('mousedown'), mouseDownHandler)
+
+      const handleMove = (coordinates) => {
+        // Check fulfillment
+        if (onSwipeRequirementFulfilled || onSwipeRequirementUnfulfilled) {
+          const dir = getSwipeDirection(swipeRequirementType === 'velocity' ? speed : getTranslate(element.current))
+          if (dir !== swipeThresholdFulfilledDirection) {
+            swipeThresholdFulfilledDirection = dir
+            if (swipeThresholdFulfilledDirection === 'none') {
+              if (onSwipeRequirementUnfulfilled) onSwipeRequirementUnfulfilled()
+            } else {
+              if (onSwipeRequirementFulfilled) onSwipeRequirementFulfilled(dir)
+            }
           }
         }
+
+        // Move
+        const newLocation = dragableTouchmove(coordinates, element.current, offset, lastLocation)
+        speed = calcSpeed(lastLocation, newLocation)
+        lastLocation = newLocation
       }
 
-      // Move
-      const newLocation = dragableTouchmove(coordinates, element.current, offset, lastLocation)
-      speed = calcSpeed(lastLocation, newLocation)
-      lastLocation = newLocation
+      const touchMoveHandler = (ev) => {
+        ev.preventDefault()
+        handleMove(touchCoordinatesFromEvent(ev))
+      }
+      element.current.addEventListener(('touchmove'), touchMoveHandler)
+
+      const mouseMoveHandler = (ev) => {
+        ev.preventDefault()
+        if (mouseIsClicked) {
+          handleMove(mouseCoordinatesFromEvent(ev))
+        }
+      }
+      element.current.addEventListener(('mousemove'), mouseMoveHandler)
+
+      const touchEndHandler = (ev) => {
+        ev.preventDefault()
+        handleSwipeReleased(element.current, speed)
+      }
+      element.current.addEventListener(('touchend'), touchEndHandler)
+
+      const mouseUpHandler = (ev) => {
+        if (mouseIsClicked) {
+          ev.preventDefault()
+          mouseIsClicked = false
+          handleSwipeReleased(element.current, speed)
+        }
+      }
+      element.current.addEventListener(('mouseup'), mouseUpHandler)
+
+      const mouseLeaveHandler = (ev) => {
+        if (mouseIsClicked) {
+          ev.preventDefault()
+          mouseIsClicked = false
+          handleSwipeReleased(element.current, speed)
+        }
+      }
+      element.current.addEventListener(('mouseleave'), mouseLeaveHandler)
+
+      return () => {
+        element.current.removeEventListener(('touchstart'), touchStartHandler)
+        element.current.removeEventListener(('mousedown'), mouseDownHandler)
+        element.current.removeEventListener(('touchmove'), touchMoveHandler)
+        element.current.removeEventListener(('mousemove'), mouseMoveHandler)
+        element.current.removeEventListener(('touchend'), touchEndHandler)
+        element.current.removeEventListener(('mouseup'), mouseUpHandler)
+        element.current.removeEventListener(('mouseleave'), mouseLeaveHandler)
+      }
     }
-
-    element.current.addEventListener(('touchmove'), (ev) => {
-      ev.preventDefault()
-      handleMove(touchCoordinatesFromEvent(ev))
-    })
-
-    element.current.addEventListener(('mousemove'), (ev) => {
-      ev.preventDefault()
-      if (mouseIsClicked) {
-        handleMove(mouseCoordinatesFromEvent(ev))
-      }
-    })
-
-    element.current.addEventListener(('touchend'), (ev) => {
-      ev.preventDefault()
-      handleSwipeReleased(element.current, speed)
-    })
-
-    element.current.addEventListener(('mouseup'), (ev) => {
-      if (mouseIsClicked) {
-        ev.preventDefault()
-        mouseIsClicked = false
-        handleSwipeReleased(element.current, speed)
-      }
-    })
-
-    element.current.addEventListener(('mouseleave'), (ev) => {
-      if (mouseIsClicked) {
-        ev.preventDefault()
-        mouseIsClicked = false
-        handleSwipeReleased(element.current, speed)
-      }
-    })
   }, [handleSwipeReleased, handleSwipeStart, onSwipeRequirementFulfilled, onSwipeRequirementUnfulfilled, swipeRequirementType])
   // TODO fix so swipeRequirementType can be changed on the fly. Pass as dependency cleanup eventlisteners and update new eventlisteners.
 

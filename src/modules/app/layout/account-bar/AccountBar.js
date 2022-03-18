@@ -2,10 +2,8 @@ import './AccountBar.scss'
 import { useSelector } from 'react-redux'
 import { selectAuthenProfile } from 'modules/redux/authenSlice'
 
-function AccountBar({ onClose }) {
+function AccountBar({ onClose, onLogout }) {
   const authen = useSelector(selectAuthenProfile)
-
-  authen.image = 'https://images-ssl.gotinder.com/6225789fca044301007d251f/640x800_bf226470-baec-4ba2-b848-297292d068b1.jpg'
 
   return (
     <div className="account-bar">
@@ -60,6 +58,9 @@ function AccountBar({ onClose }) {
             <span>Media</span>
           </div>
         </div>
+      </div>
+      <div className="bottom-section">
+        <button onClick={() => onLogout()}>Logout Account</button>
       </div>
     </div>
   )

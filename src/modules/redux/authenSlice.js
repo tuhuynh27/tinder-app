@@ -34,7 +34,7 @@ export const authenSlice = createSlice({
     doLoginTest: (state, action) => {
       state.name = 'Test'
       state.email = 'test@tinder.fuhcm.com'
-      state.image = 'https://i.kym-cdn.com/photos/images/newsfeed/000/925/494/218.png_large'
+      state.image = 'https://ca.slack-edge.com/T0GCQ370X-USZH19XRQ-48946bdcb330-512'
       state.isAuthenticated = true
     },
     doLogout: (state, action) => {

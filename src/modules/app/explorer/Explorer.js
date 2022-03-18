@@ -124,7 +124,10 @@ function Explorer() {
           key={profile.id}
           onSwipe={(dir) => swiped(dir, profile, index)}
           onCardLeftScreen={() => outOfFrame(profile.name, index)}
-          preventSwipe={['up', 'down']}>
+          preventSwipe={['up', 'down']}
+          disableSwipe={false}
+          onClickHandler={() => openProfile(profile)}
+        >
           <ExplorerImage profile={profile}/>
         </TinderCard>)}
       {!canSwipe && <NotFound/>}
@@ -140,4 +143,4 @@ function Explorer() {
   )
 }
 
-export default Explorer
+export default React.memo(Explorer)

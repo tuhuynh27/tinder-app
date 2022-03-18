@@ -56,4 +56,4 @@ function LandingPage() {
     </div>
   )
 }
-export default LandingPage
+export default React.memo(LandingPage)

@@ -46,4 +46,4 @@ function ProfilePopup() {
   )
 }
 
-export default ProfilePopup
+export default React.memo(ProfilePopup)

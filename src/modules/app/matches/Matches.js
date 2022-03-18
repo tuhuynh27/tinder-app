@@ -20,7 +20,7 @@ function Matches() {
           <div className="name">Vaccine</div>
         </div>
         {listMatched.map(e => (
-          <div className="profile-card" onClick={() => openProfile(e)}>
+          <div key={e.id} className="profile-card" onClick={() => openProfile(e)}>
             <div className="image"
                  style={{ backgroundImage: `url('${e.image}')` }}/>
             <div className="name">{e.name}</div>
