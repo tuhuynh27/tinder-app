@@ -9,6 +9,7 @@
   align-items: center;
 
   button {
+    cursor: pointer;
     background: transparent;
     border: 0;
 
@@ -120,6 +121,7 @@
   }
 
   .open-profile-button {
+    cursor: pointer;
     position: absolute;
     bottom: calc(84px + 20px);
     right: 20px;

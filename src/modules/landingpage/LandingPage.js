@@ -3,7 +3,7 @@ import './LandingPage.scss'
 import { useNavigate } from 'react-router-dom'
 
 import LogoWhite from 'assets/img/logo_white.png'
-import LoginPopup from './LoginPopup'
+import LoginPopup from './login-popup/LoginPopup'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { doLogin, doLoginTest, selectIsAuthenticated } from 'modules/redux/authenSlice'

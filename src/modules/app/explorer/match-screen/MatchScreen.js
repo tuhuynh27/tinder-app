@@ -44,7 +44,7 @@ function MatchScreen() {
     setPulse(false)
     setTimeout(() => {
       setPulse(true)
-    }, 50)
+    }, 10)
   }
 
   return (

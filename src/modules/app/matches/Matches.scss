@@ -25,6 +25,7 @@
     }
 
     .profile-card {
+      cursor: pointer;
       width: 90px;
       min-width: 90px;
       height: 145px;
@@ -63,6 +64,7 @@
 
   .messages-list {
     .message-item {
+      cursor: pointer;
       display: flex;
       flex-direction: row;
 
