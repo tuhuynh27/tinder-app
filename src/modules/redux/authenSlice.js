@@ -24,7 +24,8 @@ export const authenSlice = createSlice({
   },
   reducers: {
     doLogin: (state, action) => {
-      const { name, email, image } = action.payload
+      let { name, email, image } = action.payload
+      image = image.split('=')[0]
       state.name = name
       state.email = email
       state.image = image
