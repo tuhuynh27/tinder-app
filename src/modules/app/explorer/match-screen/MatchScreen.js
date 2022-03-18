@@ -3,6 +3,8 @@ import './MatchScreen.scss'
 
 import PubSub from 'pubsub-js'
 
+import { CSSTransition } from 'react-transition-group'
+
 import MatchImg from 'assets/img/match.png'
 
 const queue = []
@@ -48,8 +50,13 @@ function MatchScreen() {
   }
 
   return (
-    <React.Fragment>
-      {isOpen && <div className="match-screen" onClick={() => doPulse()} style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,1)), url('${image}')` }}>
+    <CSSTransition
+      in={isOpen}
+      timeout={500}
+      classNames="match-screen-anim"
+      unmountOnExit
+    >
+      <div className="match-screen" onClick={() => doPulse()} style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,1)), url('${image}')` }}>
         <div className="close" onClick={() => close()}>
           <svg focusable="false" aria-hidden="true" role="presentation" viewBox="0 0 24 24" width="20px" height="20px"
                className="Sq(24px) P(4px)">
@@ -59,8 +66,8 @@ function MatchScreen() {
         </div>
         {pulse && <img src={MatchImg} alt="Match"/>}
         <p>{name} likes you too!</p>
-      </div>}
-    </React.Fragment>
+      </div>
+    </CSSTransition>
   )
 }
 

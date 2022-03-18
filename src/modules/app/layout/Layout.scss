@@ -11,3 +11,32 @@
     background-color: #F6F7F8;
   }
 }
+
+.account-bar-anim-enter {
+}
+.account-bar-anim-enter-active {
+  animation: account-bar-slide-in 500ms forwards;
+}
+.account-bar-anim-exit {
+}
+.account-bar-anim-exit-active {
+  animation: 500ms account-bar-slide-out forwards;
+}
+
+@keyframes account-bar-slide-in {
+  from {
+    margin-right: 100%;
+  }
+  to {
+    margin-right: 0;
+  }
+}
+
+@keyframes account-bar-slide-out {
+  from {
+    margin-right: 0;
+  }
+  to {
+    margin-right: 100%;
+  }
+}

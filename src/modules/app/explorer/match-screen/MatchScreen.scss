@@ -8,19 +8,6 @@
   background-position: 50% 50%;
   background-size: cover;
 
-  animation: 0.5s slide-up;
-
-  @keyframes slide-up {
-    from {
-      margin-top: 100%;
-      height: 100%;
-    }
-    to {
-      margin-top: 0%;
-      height: 100%;
-    }
-  }
-
   .close {
     cursor: pointer;
     position: fixed;
@@ -59,5 +46,39 @@
     color: white;
     width: 100%;
     text-align: center;
+  }
+}
+
+.match-screen-anim-enter {
+  opacity: 0;
+}
+.match-screen-anim-enter-active {
+  opacity: 1;
+  animation: match-screen-slide-up 500ms forwards;
+  transition: opacity 300ms, transform 300ms;
+}
+.match-screen-anim-exit {
+}
+.match-screen-anim-exit-active {
+  animation: match-screen-slide-down 500ms forwards;
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+@keyframes match-screen-slide-up {
+  from {
+    margin-top: 100%;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+
+@keyframes match-screen-slide-down {
+  from {
+    margin-top: 0;
+  }
+  to {
+    margin-top: 100%;
   }
 }
