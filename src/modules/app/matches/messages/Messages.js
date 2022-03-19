@@ -37,7 +37,7 @@ function Messages({ profile, onClose }) {
 
   function sendMsg() {
     if (message.trim() !== '') {
-      setListMessages([...listMessages, {
+      setListMessages(l => [...l, {
         id: Math.random(),
         text: message,
         isMe: true
