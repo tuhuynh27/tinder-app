@@ -18,13 +18,7 @@ function Messages({ profile, onClose }) {
 
   useEffect(() => {
     if (profile.name === 'Developer') {
-      setTimeout(() => {
-        setListMessages( l => [...l, {
-          id: Math.random(),
-          text: 'Hello, how can I help you?',
-          isMe: false
-        }])
-      }, 2000)
+      fakeReply('Hi, how can I help you?', 2000)
     }
   }, [profile.name])
 
@@ -37,6 +31,7 @@ function Messages({ profile, onClose }) {
 
   function sendMsg() {
     if (message.trim() !== '') {
+      fakeReply()
       setListMessages(l => [...l, {
         id: Math.random(),
         text: message,
@@ -44,6 +39,33 @@ function Messages({ profile, onClose }) {
       }])
       setMessage('')
     }
+  }
+
+  function fakeReply(msg, delay) {
+    if (!msg) {
+      const randomMsg = [
+        'Hi',
+        'Oh...',
+        'Yeah',
+        'Sure',
+        'Wait...',
+        'Okay',
+        'Nope',
+        'Are you kidding?',
+        'I don\'t know'
+      ]
+      msg = randomMsg[Math.floor(Math.random() * randomMsg.length)]
+    }
+    if (!delay) {
+      delay = Math.random() * (3000 - 1000) + 1000
+    }
+    setTimeout(() => {
+      setListMessages( l => [...l, {
+        id: Math.random(),
+        text: msg,
+        isMe: false
+      }])
+    }, delay)
   }
 
   return (
