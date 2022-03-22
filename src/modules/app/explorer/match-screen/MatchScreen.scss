@@ -67,18 +67,18 @@
 
 @keyframes match-screen-slide-up {
   from {
-    margin-top: 100%;
+    transform: translate(50%, 50%);
   }
   to {
-    margin-top: 0;
+    transform: translate(50%,-50%);
   }
 }
 
 @keyframes match-screen-slide-down {
   from {
-    margin-top: 0;
+    transform: translate(50%, -50%);
   }
   to {
-    margin-top: 100%;
+    transform: translate(50%, 50%);
   }
 }

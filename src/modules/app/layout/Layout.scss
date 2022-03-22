@@ -20,23 +20,23 @@
 .account-bar-anim-exit {
 }
 .account-bar-anim-exit-active {
-  animation: 500ms account-bar-slide-out forwards;
+  animation: account-bar-slide-out 500ms forwards;
 }
 
 @keyframes account-bar-slide-in {
   from {
-    margin-right: 100%;
+    transform: translate(-200%, -50%);
   }
   to {
-    margin-right: 0;
+    transform: translate(50%, -50%);
   }
 }
 
 @keyframes account-bar-slide-out {
   from {
-    margin-right: 0;
+    transform: translate(50%, -50%);
   }
   to {
-    margin-right: 100%;
+    transform: translate(-200%, -50%);
   }
 }

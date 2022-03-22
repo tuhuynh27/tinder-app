@@ -6,9 +6,9 @@ import TinderCard from 'animation/swipe'
 import ExplorerImage from './explorer-image/ExplorerImage'
 import Button from './swipe-buttons/SwipeButtons'
 import MatchScreen from './match-screen/MatchScreen'
-import NotFound from '../notfound/NotFound'
+import NotFound from 'modules/app/notfound/NotFound'
 
-import { getExplorerProfiles } from './data/explorer'
+import { getExplorerProfiles } from 'modules/data/explorer'
 
 import { useDispatch } from 'react-redux'
 import { addMatched, addLiked } from 'modules/redux/matchedSlice'

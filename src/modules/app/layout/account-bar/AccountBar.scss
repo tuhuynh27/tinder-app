@@ -155,23 +155,23 @@
 .edit-info-anim-exit {
 }
 .edit-info-anim-exit-active {
-  animation: 500ms edit-info-slide-down forwards;
+  animation: edit-info-slide-down 500ms forwards;
 }
 
 @keyframes edit-info-slide-up {
   from {
-    margin-top: 200%;
+    transform: translate(50%, 50%);
   }
   to {
-    margin-top: 0;
+    transform: translate(50%, -50%);
   }
 }
 
 @keyframes edit-info-slide-down {
   from {
-    margin-top: 0;
+    transform: translate(50%, -50%);
   }
   to {
-    margin-top: 200%;
+    transform: translate(50%, 50%);
   }
 }
