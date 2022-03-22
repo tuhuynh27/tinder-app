@@ -24,7 +24,7 @@ function Messages({ profile, onClose }) {
           text: 'Hello, how can I help you?',
           isMe: false
         }])
-      }, 1000)
+      }, 2000)
     }
   }, [profile.name])
 

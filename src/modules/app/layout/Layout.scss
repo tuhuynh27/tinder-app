@@ -40,3 +40,22 @@
     transform: translate(-200%, -50%);
   }
 }
+
+.fade-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: opacity 200ms ease-in;
+}
+.fade-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 200ms ease-in;
+}

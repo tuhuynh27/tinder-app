@@ -9,12 +9,11 @@
 
   .title {
     font-weight: bold;
-    font-size: 1¢px;
+    font-size: 15px;
     padding: 20px 10px 10px 10px;
   }
 
   .matches-list {
-    margin-top: 10px;
     display: flex;
     flex-direction: row;
     overflow-x: auto;
@@ -45,6 +44,7 @@
         height: 120px;
         margin-left: 6px;
         margin-right: 6px;
+        background-color: #f0f2f4;
         background-size: cover;
         background-position: 50% 0;
         border-radius: 4px;
