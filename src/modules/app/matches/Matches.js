@@ -35,8 +35,8 @@ function Matches() {
         </div>
         <div className="matches-list">
           {
-            listMatched.length === 0 && Array(4).fill(null).map(() =>
-              <div className="profile-card">
+            listMatched.length === 0 && Array(4).fill(null).map((_, i) =>
+              <div className="profile-card" key={`left_${i}`}>
                 <div className="image"/>
               </div>)
           }
@@ -48,8 +48,8 @@ function Matches() {
             </div>
           ))}
           {
-            listMatched.length < 4 && Array(4 - listMatched.length).fill(null).map(() =>
-              <div className="profile-card">
+            (listMatched.length > 0 && listMatched.length < 4) && Array(4 - listMatched.length).fill(null).map((_, i) =>
+              <div className="profile-card" key={`right_${i}`}>
                 <div className="image"/>
               </div>)
           }

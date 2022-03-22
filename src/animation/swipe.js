@@ -211,7 +211,9 @@ const TinderCard = React.forwardRef(({
       if (!onClickHandler) {
         console.warn('You have disabled swipe but not provided an onClickHandler')
       }
+
       const emptyFunc = () => {}
+
       element.current.addEventListener(('click'), onClickHandler ? onClickHandler : emptyFunc)
 
       const cleanupNode = element.current
@@ -226,8 +228,15 @@ const TinderCard = React.forwardRef(({
       let mouseIsClicked = false
       let swipeThresholdFulfilledDirection = 'none'
 
+      const clickHandler = (ev) => {
+        if (onClickHandler && typeof onClickHandler === 'function') {
+          onClickHandler(ev)
+        }
+      }
+
       const touchStartHandler = (ev) => {
         ev.preventDefault()
+        clickHandler(ev)
         handleSwipeStart()
         offset = { x: -touchCoordinatesFromEvent(ev).x, y: -touchCoordinatesFromEvent(ev).y }
       }
@@ -235,6 +244,7 @@ const TinderCard = React.forwardRef(({
 
       const mouseDownHandler = (ev) => {
         ev.preventDefault()
+        clickHandler(ev)
         mouseIsClicked = true
         handleSwipeStart()
         offset = { x: -mouseCoordinatesFromEvent(ev).x, y: -mouseCoordinatesFromEvent(ev).y }

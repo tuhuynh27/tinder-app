@@ -5,15 +5,7 @@ import GoogleLogin from "react-google-login";
 import Logo from 'assets/img/logo.png'
 
 function LoginPopup({ onClose, onLogin, onLoginTest }) {
-  const responseGoogle = data => {
-    if (data && data.error) {
-      if (data.details) {
-        alert(data.details)
-      } else {
-        alert(data.error)
-      }
-    }
-
+  function responseGoogle(data) {
     if (data.error) return
     if (!data || !data.profileObj.email || !data.accessToken) return
 
@@ -52,7 +44,7 @@ function LoginPopup({ onClose, onLogin, onLoginTest }) {
               <img src="https://tinder.com/static/build/l/cfcb4297ed6f46ca69fb5572946d4096.svg" alt="Google" />
             </button>
           )}
-          buttonText="Login with Google "
+          buttonText="Login with Google"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
         />
