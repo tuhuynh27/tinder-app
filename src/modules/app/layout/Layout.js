@@ -54,7 +54,6 @@ function Layout() {
       </div>
       <Loading/>
       <ProfilePopup/>
-
       <CSSTransition
         in={isAccountBarOpen}
         timeout={500}

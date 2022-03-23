@@ -19,9 +19,9 @@ function Main() {
       <Routes>
         <Route exact path="/" element={<LandingPage/>}/>
         <Route path="/app" element={<Layout/>}>
-          <Route index element={<Explorer />}/>
-          <Route path="my-likes" element={<MyLikes />}/>
-          <Route path="matches" element={<Matches />}/>
+          <Route index element={<Explorer/>}/>
+          <Route path="my-likes" element={<MyLikes/>}/>
+          <Route path="matches" element={<Matches/>}/>
           <Route path="*" element={<NotFound/>} />
         </Route>
       </Routes>

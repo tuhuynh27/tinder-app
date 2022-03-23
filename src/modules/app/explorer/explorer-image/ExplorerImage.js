@@ -1,7 +1,7 @@
 import './ExplorerImage.scss'
 
 function ExplorerImage({ profile }) {
-  const { name, age, bio, image } = profile;
+  const { name, age, bio, image } = profile
 
   return (
     <div className="explore-image"
