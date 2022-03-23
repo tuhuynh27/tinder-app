@@ -228,15 +228,8 @@ const TinderCard = React.forwardRef(({
       let mouseIsClicked = false
       let swipeThresholdFulfilledDirection = 'none'
 
-      const clickHandler = (ev) => {
-        if (onClickHandler && typeof onClickHandler === 'function') {
-          onClickHandler(ev)
-        }
-      }
-
       const touchStartHandler = (ev) => {
         ev.preventDefault()
-        clickHandler(ev)
         handleSwipeStart()
         offset = { x: -touchCoordinatesFromEvent(ev).x, y: -touchCoordinatesFromEvent(ev).y }
       }
@@ -244,7 +237,6 @@ const TinderCard = React.forwardRef(({
 
       const mouseDownHandler = (ev) => {
         ev.preventDefault()
-        clickHandler(ev)
         mouseIsClicked = true
         handleSwipeStart()
         offset = { x: -mouseCoordinatesFromEvent(ev).x, y: -mouseCoordinatesFromEvent(ev).y }
